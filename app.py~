@@ -52,6 +52,7 @@ def plot():
 			adj_open_price = wiki_data[name]
 		
 	date,close,adj_close,openp,adj_open = [],[],[],[],[]
+	final_data = []
 	N = dimensions[0]
 	#find current month
 	month = now.month - 1 
