@@ -6,3 +6,5 @@ itsdangerous==0.24
 MarkupSafe==0.23
 Bokeh==0.12.1
 conda==4.1.8
+conda-build==1.21.3
+conda-env==2.5.0a0
