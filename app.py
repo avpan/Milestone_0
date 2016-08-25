@@ -93,5 +93,5 @@ def plot():
   	
 
 if __name__ == '__main__':
-	app.run(port=33507)
+	app.run()
   #app.run(debug=True)
