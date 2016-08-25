@@ -4,5 +4,10 @@ Jinja2==2.8
 Werkzeug==0.11.10
 itsdangerous==0.24
 MarkupSafe==0.23
+dill==0.2.1
+oauth==1.0.1
+oauthlib==0.7.2
+requests>=2.2.1
+simplejson==3.8.0
 Bokeh==0.12.1
-conda==4.1.8
+pandas==0.18.1
