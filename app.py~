@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from bokeh.plotting import figure
 from bokeh.embed import components 
+from bokeh.io import gridplot
 import requests
 import pandas
 import csv
@@ -52,32 +53,40 @@ def plot():
 			adj_open_price = wiki_data[name]
 		
 	date,close,adj_close,openp,adj_open = [],[],[],[],[]
-	final_data = []
 	N = dimensions[0]
 	#find current month
 	month = now.month - 1 
 	year = now.year
+	'''
 	for i in range(N):
 		if date_month[i] == month and date_year[i] == year:
 			date.append(dates[i])
 			for name in features:
 				if name == 'Close':
 					close.append(close_price[i])
-				elif name == 'Adj.Close':
+				elif name == 'Adj. Close':
 					adj_close.append(adj_close_price[i])
 				elif name == 'Open':
 					openp.append(open_price[i])
 				else:
 					adj_open.append(adj_open_price[i])
-		
+	'''
 	#plotting in bokeh
 	TOOLS = "pan,wheel_zoom,box_zoom,reset,resize"
 	plot = figure(tools=TOOLS, title = 
 								'%s Data' % app.vars['ticker'], 
 								x_axis_label = 'date', 
 								x_axis_type='datetime')
-	
-	plot.line(date,close)
+	for name in features:
+		if name == 'Close':
+			plot.line(dates,close_price,color="navy",legend="closing price")
+		elif name == 'Adj. Close':
+			plot.line(dates,adj_close, color="red",legend="adj. closing price")
+		elif name == 'Open':
+			plot.line(dates,openp,color="magenta",legend="open price")
+		else:
+			plot.line(dates,adj_open,color="green",legend="adj. open price")
+	#plot=gridplot(plot)
 	script, div = components(plot)
 	
 	return render_template('graph.html',script=script,div=div, graph=app.vars['ticker'])
