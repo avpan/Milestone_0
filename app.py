@@ -86,6 +86,7 @@ def plot():
 			plot.line(date,openp,color="magenta",legend="open price")
 		else:
 			plot.line(date,adj_open,color="green",legend="adj. open price")
+			
 	#plot=gridplot(plot)
 	script, div = components(plot)
 	

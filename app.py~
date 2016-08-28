@@ -63,6 +63,7 @@ def plot():
 			date.append(dates[i])
 			for name in features:
 				if name == 'Close':
+					print 'hello'
 					close.append(close_price[i])
 				elif name == 'Adj. Close':
 					adj_close.append(adj_close_price[i])
@@ -77,6 +78,7 @@ def plot():
 								'%s Data' % app.vars['ticker'], 
 								x_axis_label = 'date', 
 								x_axis_type='datetime')
+	print date
 	for name in features:
 		if name == 'Close':
 			plot.line(date,close,color="navy",legend="closing price")
@@ -86,6 +88,7 @@ def plot():
 			plot.line(date,openp,color="magenta",legend="open price")
 		else:
 			plot.line(date,adj_open,color="green",legend="adj. open price")
+			
 	#plot=gridplot(plot)
 	script, div = components(plot)
 	
